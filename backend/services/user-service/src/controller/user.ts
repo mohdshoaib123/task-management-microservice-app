@@ -3,7 +3,6 @@ import { User } from "../models/user.model.js";
 import { AppError, ConflictError, ForbiddenError, NotFoundError, UnauthorizedError, ValidationError } from "../shared/errors/index.js";
 import bcrypt from "bcrypt"
 import { logger } from "../config/logger.js";
-import type { ApiResponse } from "../shared/types/index.js";
 import { tryCatch } from "../middleware/tryCatchWrap.js";
 import { sendEmail } from "../email-service/email.js";
 import { generateOTP, getOtpHtml } from "../utils/utils.js";
@@ -53,6 +52,7 @@ export const userRegister= tryCatch(  async (req:Request,res:Response,next:NextF
       // Generate new OTP
       const otp = generateOTP();
       const otpHash = await bcrypt.hash(otp, 10);
+      console.log(otp)
 
       await Otp.create({
         email,

@@ -37,7 +37,7 @@ export const Otp=mongoose.model("Otp",otpSchema)
 export const zOtpSchema=z.object({
   email:z.email("Please provide a valid email address").toLowerCase().trim(),
   
-  otpHash:z.string().min(6,"OTP must be at least 6 characters long"),
+  otp:z.string().min(6,"OTP must be at least 6 characters long"),
   
 
 })

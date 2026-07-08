@@ -18,7 +18,10 @@ import { NotFoundError } from "./shared/errors/index.js"
 app.use("/",userRoutes)
 
 
-await verifyEmailConnection()
+
+
+
+
 
 
 app.use((req, res) => {
@@ -38,3 +41,4 @@ logger.error(err)
 
 
 })
+ await verifyEmailConnection()
