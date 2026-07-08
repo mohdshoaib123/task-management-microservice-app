@@ -6,7 +6,7 @@ import { connectDB } from "./config/db.js"
 import {logger} from "./config/logger.js"
 import userRoutes from "./routes/user.js"
 import { globalErrorHandler } from "./middleware/globalError.Handler.js"
-import { verifyEmailConnection } from "./email-service/email.js"
+
 import { NotFoundError } from "./shared/errors/index.js"
 
 
@@ -41,4 +41,4 @@ logger.error(err)
 
 
 })
- await verifyEmailConnection()
+ 
