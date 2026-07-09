@@ -5,10 +5,7 @@ import { taskProxy, userProxy } from "../services/proxy.js"
 
 
 
- router.use((req, res, next) => {
-  console.log("User router:", req.originalUrl);
-  next();
-});
+
 router.use("/user",userProxy)
 router.use("/task",taskProxy)
 

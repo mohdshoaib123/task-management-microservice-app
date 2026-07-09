@@ -9,7 +9,7 @@ const Home = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:3000/api/v1/user/logout', {}, { withCredentials: true })
+      await axios.post('https://api-gateway-latest-2.onrender.com/api/v1/user/logout', {}, { withCredentials: true })
     } catch {
       // ignore and proceed with client-side cleanup
     } finally {

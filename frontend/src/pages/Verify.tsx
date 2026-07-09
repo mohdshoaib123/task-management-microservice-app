@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
-const API_URL = 'http://localhost:3000/api/v1/user'
+const API_URL = 'https://api-gateway-latest-2.onrender.com/api/v1/user'
 
 const Verify = () => {
   const navigate = useNavigate()
@@ -37,10 +37,11 @@ localStorage.setItem('token', response.data.token)
       setMessage(response.data.message || 'Verification successful.')
       toast.success(message)
       localStorage.removeItem('verifyEmail')
+      
       setOtp('')
       setTimeout(() => {
-        navigate('/login')
-      }, 1200)
+        navigate('/')
+      }, 1000)
     } catch (axiosError: unknown) {
       if (axios.isAxiosError(axiosError)) {
         setError(

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
-const API_URL = 'http://localhost:3000/api/v1/user'
+const API_URL = 'https://api-gateway-latest-2.onrender.com/api/v1/user'
 
 const Login = () => {
   const navigate = useNavigate()

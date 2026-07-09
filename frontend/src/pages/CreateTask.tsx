@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 
-const API_URL = 'http://localhost:3000/api/v1/task'
+const API_URL = 'https://api-gateway-latest-2.onrender.com/api/v1/task'
 
 const CreateTask = () => {
   const navigate = useNavigate()

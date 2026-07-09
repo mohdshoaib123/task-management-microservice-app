@@ -154,7 +154,11 @@ const user=await User.findByIdAndUpdate(otpDoc.user,{isVerified:true})
   
   await Otp.deleteMany({email:email})
   const token=jwt.sign({id:user?._id},SECRET_TOKEN as string ,{expiresIn:"7d"})
-  res.cookie("token",token)
+  res.cookie("token",token,{
+    httpOnly: true,
+    secure: true,       // production में HTTPS required
+    sameSite: "none",   //  cross-origin allowed
+  })
 
   res.status(200).json({
     success:true,
@@ -227,7 +231,11 @@ if(!isMatch){
 }
 
 const token=jwt.sign({id:user._id},SECRET_TOKEN as string,{expiresIn:"7d"})
-res.cookie("token",token)
+res.cookie("token",token,{
+    httpOnly: true,
+    secure: true,       //  production मे HTTPS required
+    sameSite: "none",   //  cross-origin allowed
+  })
 
 res.status(200).json({success:true,
   message:"Login Successfull",
@@ -236,6 +244,8 @@ res.status(200).json({success:true,
 })
 
 export const logoutUser=tryCatch(async (req:Request,res:Response)=>{
-  res.clearCookie('token')
+  res.clearCookie('token',{ httpOnly: true,
+  secure: true,
+  sameSite: "none"})
   res.status(200).json({ success: true, message: 'Logout successful' })
 })

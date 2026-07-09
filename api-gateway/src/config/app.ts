@@ -3,6 +3,7 @@ import cors from "cors"
 import { CLIENT_URL } from "./env.js";
 
 
+
 export const app=express()
 
 app.use(
@@ -13,3 +14,12 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 )
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    service: "api-gateway",
+    status: "healthy",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+  });
+});
