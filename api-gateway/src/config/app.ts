@@ -6,6 +6,8 @@ import { CLIENT_URL } from "./env.js";
 
 export const app=express()
 
+app.set("trust proxy", 1);
+
 app.use(
   cors({
     origin: CLIENT_URL,

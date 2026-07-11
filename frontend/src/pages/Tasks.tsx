@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 
-const API_URL = 'https://api-gateway-latest-2.onrender.com/api/v1/task'
+const API_URL = 'https://api-gateway-1g0o.onrender.com/api/v1/task'
 
 type TaskItem = {
   id: string

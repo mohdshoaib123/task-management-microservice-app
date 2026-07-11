@@ -4,7 +4,7 @@ import Loading from '../components/Loading'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 
-const API_URL = 'https://api-gateway-latest-2.onrender.com/api/v1/user'
+const API_URL = 'https://api-gateway-1g0o.onrender.com/api/v1/user'
 
 const Register = () => {
   const navigate = useNavigate()
