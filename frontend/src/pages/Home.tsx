@@ -2,17 +2,21 @@ import axios from 'axios'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import { useAuth } from '../context/AuthContext'
+
 
 const Home = () => {
   const navigate = useNavigate()
   
 
   const handleLogout = async () => {
+    const {setToken}=useAuth()
     try {
       await axios.post('https://api-gateway-1g0o.onrender.com/api/v1/user/logout', {}, { withCredentials: true })
     } catch {
       // ignore and proceed with client-side cleanup
     } finally {
+      setToken(null)
       localStorage.removeItem('token')
       toast.success('Logged out successfully')
       navigate('/login')

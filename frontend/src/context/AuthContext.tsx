@@ -1,5 +1,9 @@
-import React,{createContext, useContext, useState,} from 'react'
+import React,{createContext, useContext, useState, type ReactNode,} from 'react'
 
+
+interface Props {
+  children: ReactNode;
+}
 
 
 
@@ -12,7 +16,7 @@ export const authContext=createContext<AuthContextType|null>(null)
 
 export const AuthProvider = ({children
 
-}:React.ReactNode ) => {
+}:Props ) => {
  const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
   );
