@@ -45,7 +45,7 @@ setToken(response.data.token)
         )
         toast.error(error)
       } else {
-        const message =axiosError.response?.data?.err.message || "Something went wrong";
+        const message="Something went wrong";
 
     setError(message);
 

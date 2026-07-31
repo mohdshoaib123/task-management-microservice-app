@@ -8,9 +8,9 @@ import { useAuth } from '../context/AuthContext'
 const Home = () => {
   const navigate = useNavigate()
   
-
+const {setToken,token}=useAuth()
   const handleLogout = async () => {
-    const {setToken}=useAuth()
+    
     try {
       await axios.post('https://api-gateway-1g0o.onrender.com/api/v1/user/logout', {}, { withCredentials: true })
     } catch {
