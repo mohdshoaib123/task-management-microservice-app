@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
+import { useAuth } from '../context/AuthContext'
 
 const API_URL = 'https://api-gateway-1g0o.onrender.com/api/v1/user'
 
@@ -12,6 +13,7 @@ const Login = () => {
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const {setToken}=useAuth()
 
   const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -25,13 +27,15 @@ const Login = () => {
         password,
       },{ withCredentials: true })
 localStorage.setItem("token",response.data.token)
-      setMessage(response.data.message || 'Login successful.')
+setToken(response.data.token)      
+setMessage(response.data.message || 'Login successful.')
       toast.success(message)
+      
       setEmail('')
       setPassword('')
       setTimeout(() => {
         navigate('/')
-      }, 1000)
+      }, 1500)
     } catch (axiosError: unknown) {
       if (axios.isAxiosError(axiosError)) {
         setError(

@@ -7,9 +7,11 @@ import TaskPage from '../pages/Task'
 import Tasks from '../pages/Tasks'
 import UpdateTask from '../pages/UpdateTask'
 import Verify from '../pages/Verify'
+import { useAuth } from '../context/AuthContext'
+
 
 const AppRoute = () => {
-  const token = localStorage.getItem('token')
+  const{ token}=useAuth()
   return (
     <Routes>
       <Route path="/" element={<Home />} />

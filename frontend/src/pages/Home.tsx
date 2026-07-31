@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { useMemo } from 'react'
+
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
 const Home = () => {
   const navigate = useNavigate()
-  const token = useMemo(() => localStorage.getItem('token'), [])
+  
 
   const handleLogout = async () => {
     try {

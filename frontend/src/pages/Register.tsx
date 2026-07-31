@@ -3,12 +3,13 @@ import {  useState } from 'react'
 import Loading from '../components/Loading'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 const API_URL = 'https://api-gateway-1g0o.onrender.com/api/v1/user'
 
 const Register = () => {
   const navigate = useNavigate()
-
+const {setToken}=useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,7 +30,7 @@ const Register = () => {
         password,
       },{withCredentials:true})
       localStorage.setItem('verifyEmail', email)
-
+setToken(response.data.token)
       setMessage(response.data.message || 'Registration successful. Please verify your email.')
       toast.success(message)
       
@@ -44,7 +45,10 @@ const Register = () => {
         )
         toast.error(error)
       } else {
-        
+        const message =axiosError.response?.data?.err.message || "Something went wrong";
+
+    setError(message);
+
         toast.error(error)
       }
     } finally {
